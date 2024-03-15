@@ -24,3 +24,7 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'web-console'
 end
+
+group :test do
+  gem 'shoulda-matchers'
+end
