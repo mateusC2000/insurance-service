@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_15_142950) do
   enable_extension "plpgsql"
 
   create_table "insureds", force: :cascade do |t|
-    t.string "nome"
+    t.string "name"
     t.string "cpf"
     t.bigint "policy_id", null: false
     t.datetime "created_at", null: false
