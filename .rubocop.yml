@@ -10,3 +10,6 @@ AllCops:
 
 Metrics/BlockLength:
   ExcludedMethods: ['describe', 'context', 'feature', 'scenario', 'let']
+
+Style/Documentation:
+  Enabled: false
