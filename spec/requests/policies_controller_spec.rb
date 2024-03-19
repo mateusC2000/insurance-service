@@ -5,7 +5,8 @@ require 'rails_helper'
 describe 'Policy API' do
   context 'GET /v1/policies' do
     it 'returns all policies' do
-      policy = Policy.new(number: '3003110007872', emission_date: Date.parse('2024-03-17'), coverage_end_date: Date.parse('2026-03-17'))
+      policy = Policy.new(number: '3003110007872', emission_date: Date.parse('2024-03-17'),
+                          coverage_end_date: Date.parse('2026-03-17'))
       policy.vehicle = Vehicle.new(brand: 'McLaren', model: '765LT', year: '2020', plate: 'JOY-4213')
       policy.insured = Insured.new(name: 'Darth Vader', cpf: '206.596.120-11')
       policy.save!
@@ -31,7 +32,8 @@ describe 'Policy API' do
 
   context 'GET /v1/policies/:id' do
     it 'returns policy' do
-      policy = Policy.new(number: '3003110007872', emission_date: Date.parse('2024-03-17'), coverage_end_date: Date.parse('2026-03-17'))
+      policy = Policy.new(number: '3003110007872', emission_date: Date.parse('2024-03-17'),
+                          coverage_end_date: Date.parse('2026-03-17'))
       policy.vehicle = Vehicle.new(brand: 'McLaren', model: '765LT', year: '2020', plate: 'JOY-4213')
       policy.insured = Insured.new(name: 'Darth Vader', cpf: '206.596.120-11')
       policy.save!

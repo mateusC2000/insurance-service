@@ -7,7 +7,6 @@ class Policy < ApplicationRecord
   has_one :insured, dependent: :destroy
 
   validates :number, :emission_date, :coverage_end_date, presence: true
-  validates :number, uniqueness: true
 
   def policy_number
     self.number ||= "300311#{rand.to_s[2..8]}"
@@ -15,6 +14,6 @@ class Policy < ApplicationRecord
 
   def dates
     self.emission_date ||= Time.zone.today
-    self.coverage_end_date ||= 2.year.from_now
+    self.coverage_end_date ||= 2.years.from_now
   end
 end
