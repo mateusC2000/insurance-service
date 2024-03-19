@@ -10,11 +10,11 @@ class Policy < ApplicationRecord
   validates :number, uniqueness: true
 
   def policy_number
-    self.number = "300311#{rand.to_s[2..8]}"
+    self.number ||= "300311#{rand.to_s[2..8]}"
   end
 
   def dates
-    self.emission_date = Time.zone.today
-    self.coverage_end_date = 2.year.from_now
+    self.emission_date ||= Time.zone.today
+    self.coverage_end_date ||= 2.year.from_now
   end
 end
