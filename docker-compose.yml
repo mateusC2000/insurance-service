@@ -6,7 +6,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     volumes:
-      - insurance_service_data:/var/lib/postgresql/data
+      - /var/lib/postgresql/data
     networks:
       - insurance-service-app
     ports:
@@ -28,8 +28,16 @@ services:
       - db
     command: bash -c 'bin/setup && rails server -b 0.0.0.0 -p 3000'
   
+  sneakers:
+    build: .
+    env_file:
+      - .env
+    command: bash -c 'bundle exec rake workers:start'
+    networks:
+      - insurance-service-app
+
 volumes:
-  insurance_service_data:
+  rubygems:
 networks: 
   insurance-service-app:
     name: insurance-service-app
