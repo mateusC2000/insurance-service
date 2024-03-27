@@ -8,6 +8,7 @@ gem 'rails', '~> 7.0.8'
 
 gem 'active_model_serializers'
 gem 'bootsnap', require: false
+gem 'sneakers'
 gem 'importmap-rails'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
