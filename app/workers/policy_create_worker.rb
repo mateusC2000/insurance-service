@@ -45,7 +45,6 @@ class PolicyCreateWorker
 
   def policy_number_data
     number = "300311#{rand.to_s[2..8]}"
-    number if Policy.exists?(number: number)
   end
 
   def emission_date_data
