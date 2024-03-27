@@ -6,11 +6,53 @@ class PolicyCreateWorker
   from_queue 'policy.created'
 
   def work(message)
-    Rails.logger.info('Initializing the process...')
-    payload = JSON.parse(message)
+    puts 'Starting message processing...'
+    data = JSON.parse(message)
 
-    Rails.logger.info('policy creation...')
-    Rails.logger.info(payload.to_s)
+    ActiveRecord::Base.transaction do
+      @policy = Policy.create!(
+        number: policy_number_data,
+        emission_date: emission_date_data,
+        coverage_end_date: coverage_end_date_data
+      )
+
+      insured = Insured.create!(
+        name: data['insured']['name'],
+        cpf: data['insured']['cpf'],
+        policy_id: @policy.id
+      )
+
+      vehicle = Vehicle.create!(
+        plate: data['vehicle']['plate'],
+        brand: data['vehicle']['brand'],
+        model: data['vehicle']['model'],
+        year: data['vehicle']['year'],
+        policy_id: @policy.id
+      )
+
+      @policy.insured = insured
+      @policy.vehicle = vehicle
+      @policy.save!
+    end
+
+    puts "Policy #{@policy.number} successfully created!"
     ack!
+  rescue ActiveRecord::RecordInvalid => error
+    puts "Error creating policy: #{error}"
+  end
+
+  private
+
+  def policy_number_data
+    number = "300311#{rand.to_s[2..8]}"
+    number if Policy.exists?(number: number)
+  end
+
+  def emission_date_data
+    Time.zone.today
+  end
+
+  def coverage_end_date_data
+    2.years.from_now
   end
 end

@@ -10,6 +10,7 @@ class Policy < ApplicationRecord
 
   def policy_number
     self.number ||= "300311#{rand.to_s[2..8]}"
+    policy_number if Policy.exists?(number: number)
   end
 
   def dates
