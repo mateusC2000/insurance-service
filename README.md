@@ -1,24 +1,7 @@
-# README
+# -- INSURANCE-SERVICE --
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+O projeto consiste como base de aprendizado em algumas tecnologias como GraphQL e RabbitMQ, incluídas a Docker, Rails e PosgresQL.
 
-Things you may want to cover:
+O projeto consiste em 2 aplicações.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+2ª APP: [INSURANCE-GRAGH-API](https://github.com/mateusC2000/insurance-graphql-api)
